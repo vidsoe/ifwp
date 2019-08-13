@@ -3,7 +3,7 @@
 	if(class_exists('IFWP_Error', false)){
 		deactivate_plugins(plugin_basename(IFWP));
 		wp_die('<strong>ERROR</strong>: IFWP_Error class already exists.', 'IFWP &rsaquo; error');
-	}
+	} else {
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -46,6 +46,10 @@
 		if(WP_DEBUG){
 			trigger_error(sprintf(__('%1$s was called <strong>incorrectly</strong>. %2$s'), $function, $message));
 		}
+	}
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
