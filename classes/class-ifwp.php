@@ -1,8 +1,7 @@
 <?php
 
 	if(class_exists('IFWP', false)){
-		deactivate_plugins(plugin_basename(IFWP));
-		wp_die('<strong>ERROR</strong>: IFWP class already exists.', 'IFWP &rsaquo; error');
+		ifwp('error')->already_exists('IFWP class');
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
