@@ -41,9 +41,10 @@
         			return call_user_func(array($class, 'get_instance'));
         		} else {
                     deactivate_plugins(plugin_basename(IFWP));
-            		wp_die('<strong>ERROR</strong>: internal IFWP error.', 'IFWP &rsaquo; error');
+            		wp_die('<strong>ERROR</strong>: IFWP error.', 'IFWP &rsaquo; error');
                 }
         	}
+			ifwp()->update();
         }
     });
 
