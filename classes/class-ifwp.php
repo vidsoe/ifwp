@@ -24,7 +24,7 @@
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	public function include($path = ''){
+	public function include_path($path = ''){
 		$file = plugin_dir_path(IFWP) . 'includes/' . $path;
 		if(file_exists($file)){
 			require_once($file);
@@ -47,7 +47,7 @@
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public function update(){
-		$this->include('plugin-update-checker-4.7/plugin-update-checker.php');
+		$this->include_path('plugin-update-checker-4.7/plugin-update-checker.php');
 		Puc_v4_Factory::buildUpdateChecker('https://github.com/vidsoe/ifwp', IFWP, 'ifwp');
 	}
 
