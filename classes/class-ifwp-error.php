@@ -1,5 +1,12 @@
 <?php
 
+	if(class_exists('IFWP_Error', false)){
+		deactivate_plugins(plugin_basename(IFWP));
+		wp_die('<strong>ERROR</strong>: IFWP_Error class already exists.', 'IFWP &rsaquo; error');
+	}
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class IFWP_Error {
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8,7 +15,7 @@
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	static public function get_instance(){
+	static function get_instance(){
 		if(!self::$instance instanceof self){
 			self::$instance = new self;
 		}
@@ -17,14 +24,18 @@
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	public function __call($name, $arguments){
-		$this->trigger($name, 'Class does not exist.');
+	function __call($name, $arguments){
+		$this->doing_it_wrong($name, 'Class does not exist.');
 		return;
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//
+	// Methods
+	//
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	public function trigger($function = '', $message = ''){
+	function doing_it_wrong($function = '', $message = ''){
 		if(WP_DEBUG){
 			trigger_error(sprintf(__('%1$s was called <strong>incorrectly</strong>. %2$s'), $function, $message));
 		}

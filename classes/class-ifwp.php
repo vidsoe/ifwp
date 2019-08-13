@@ -1,5 +1,12 @@
 <?php
 
+	if(class_exists('IFWP', false)){
+		deactivate_plugins(plugin_basename(IFWP));
+		wp_die('<strong>ERROR</strong>: IFWP class already exists.', 'IFWP &rsaquo; error');
+	}
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 	class IFWP {
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -18,7 +25,7 @@
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	function __call($name, $arguments){
-        ifwp('error')->trigger(__CLASS__ . '::' . $name, 'Method does not exist.');
+        ifwp('error')->doing_it_wrong(__CLASS__ . '::' . $name, 'Method does not exist.');
 		return;
 	}
 
@@ -29,12 +36,16 @@
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	function _include($path = ''){
-		$file = plugin_dir_path(IFWP) . 'includes/' . $path;
-		if(file_exists($file)){
-			require_once($file);
-		} else {
-			ifwp('error')->trigger(__METHOD__, 'File does not exist: ' . $path);
+		$path = wp_normalize_path($path);
+		if($path and is_string($path)){
+			$path = ltrim($path, '/');
+			$file = plugin_dir_path(IFWP) . 'includes/' . $path;
+			if(file_exists($file)){
+				require_once($file);
+				return;
+			}
 		}
+		ifwp('error')->doing_it_wrong(__METHOD__, 'File does not exist.');
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -104,12 +115,15 @@
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	function includes_url($path = ''){
-		$file = plugin_dir_path(IFWP) . 'includes/' . $path;
-		if(file_exists($file)){
-			return plugin_dir_url(IFWP) . 'includes/' . $path;
-		} else {
-			ifwp('error')->trigger(__METHOD__, 'File does not exist: ' . $path);
+		$path = wp_normalize_path($path);
+		if($path and is_string($path)){
+			$path = ltrim($path, '/');
+			$file = plugin_dir_path(IFWP) . 'includes/' . $path;
+			if(file_exists($file)){
+				return plugin_dir_url(IFWP) . 'includes/' . $path;
+			}
 		}
+		ifwp('error')->doing_it_wrong(__METHOD__, 'File does not exist.');
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

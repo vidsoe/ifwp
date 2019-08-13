@@ -19,32 +19,41 @@
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     add_action('plugins_loaded', function(){
-        if(defined('IFWP') or function_exists('ifwp')){
-            deactivate_plugins(plugin_basename(__FILE__));
-            wp_die('<strong>ERROR</strong>: IFWP already exists.', 'IFWP &rsaquo; error');
-        } else {
-            define('IFWP', __FILE__);
-            function ifwp($class = 'ifwp'){
-        		if($class != 'ifwp'){
-        			$class = 'ifwp_' . str_replace('-', '_', sanitize_title($class));
-        		}
-				if(!class_exists($class, false)){
-    				$file = plugin_dir_path(IFWP) . 'classes/class-' . str_replace('_', '-', $class) . '.php';
-    				if(!file_exists($file)){
-    					$class = 'ifwp_error';
-						$file = plugin_dir_path(IFWP) . 'classes/class-' . str_replace('_', '-', $class) . '.php';
-    				}
-					require_once($file);
-    			}
-        		if(is_callable(array($class, 'get_instance'))){
-        			return call_user_func(array($class, 'get_instance'));
-        		} else {
-                    deactivate_plugins(plugin_basename(IFWP));
-            		wp_die('<strong>ERROR</strong>: IFWP error.', 'IFWP &rsaquo; error');
-                }
-        	}
-			ifwp()->update();
+		if(defined('IFWP')){
+			deactivate_plugins(plugin_basename(__FILE__));
+            wp_die('<strong>ERROR</strong>: IFWP constant already exists.', 'IFWP &rsaquo; error');
+		}
+		define('IFWP', __FILE__);
+		if(function_exists('ifwp')){
+            deactivate_plugins(plugin_basename(IFWP));
+            wp_die('<strong>ERROR</strong>: ifwp function already exists.', 'IFWP &rsaquo; error');
         }
+		function ifwp($class = 'ifwp'){
+    		if($class != 'ifwp'){
+    			$class = 'ifwp_' . str_replace('-', '_', sanitize_title($class));
+    		}
+			if(!class_exists($class, false)){
+				$file = plugin_dir_path(IFWP) . 'classes/class-' . str_replace('_', '-', $class) . '.php';
+				if(file_exists($file)){
+					require_once($file);
+				} else {
+					$class = 'ifwp_error';
+					if(!class_exists($class, false)){
+						$file = plugin_dir_path(IFWP) . 'classes/class-' . str_replace('_', '-', $class) . '.php';
+						if(file_exists($file)){
+							require_once($file);
+						}
+					}
+				}
+			}
+    		if(is_callable(array($class, 'get_instance'))){
+    			return call_user_func(array($class, 'get_instance'));
+    		} else {
+                deactivate_plugins(plugin_basename(IFWP));
+        		wp_die('<strong>ERROR</strong>: internal error.', 'IFWP &rsaquo; error');
+            }
+    	}
+		ifwp()->update();
     });
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
