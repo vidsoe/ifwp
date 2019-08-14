@@ -34,7 +34,7 @@
 	//
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	static private $bootstrap_4_fields = array(), $conditional_logic = false, $validation = false;
+	static private $bootstrap_4_fields = array(), $conditional_logic = false, $enqueue_dashicons = false, $enqueue_underscore = false, $validation = false;
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
