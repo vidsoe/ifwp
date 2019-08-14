@@ -50,9 +50,12 @@
 
 	static public function rwmb_enqueue_scripts(RW_Meta_Box $object){
 		if(self::$bootstrap_4_fields){
-			wp_enqueue_style('select2-bootstrap-theme', plugin_dir_url(IFWP) . 'classes/ifwp-meta-box/css/select2-bootstrap.min.css', array('rwmb-select2'), '0.2.0-beta.3');
-			$data = 'jQuery(function($){ $.fn.select2.defaults.set(\'theme\', \'bootstrap\'); });';
-			wp_add_inline_script('rwmb-select2', $data);
+			$url = ifwp()->includes_url('select2-bootstrap-theme-0.2.0-beta.4/dist/select2-bootstrap.min.css');
+			if($url){
+				wp_enqueue_style('select2-bootstrap-theme', $url, array('rwmb-select2'), '0.2.0-beta.4');
+				$data = 'jQuery(function($){ $.fn.select2.defaults.set(\'theme\', \'bootstrap\'); });';
+				wp_add_inline_script('rwmb-select2', $data);
+			}
 		}
 		if(self::$validation){
 			if(!empty($object->meta_box['validation'])){
@@ -83,7 +86,7 @@
 				foreach($html->find('div.rwmb-field') as $form_group){
 					if(!$form_group->hasClass('rwmb-hidden-wrapper')){
 						$form_group->addClass('form-group');
-						foreach($form_group->find('.select2-container, .rwmb-input, .rwmb-label') as $element){
+						foreach($form_group->find('.rwmb-input, .rwmb-label') as $element){
 							$element->addClass('w-100');
 						}
 						foreach($form_group->find('.rwmb-input input, .rwmb-input select') as $element){
@@ -223,6 +226,7 @@
                 }
                 .rwmb-field .select2-container {
                     min-width: 0 !important;
+					width: 100% !important;
                 }
                 .rwmb-file {
                     margin-bottom: 0 !important;
