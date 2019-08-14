@@ -134,11 +134,15 @@
 							$input = $switch->find('input', 0);
 							$input->addClass('custom-control-input');
 							$description = $switch->next_sibling();
+							$description->addClass('ifwp-remove');
 							$switch->outertext = '<div class="custom-control custom-switch">' . $input->outertext . '<label class="custom-control-label" for="' . $input->id . '">' . ($description ? $description->innertext : '')  . '</label></div>';
-							$description->outertext = '';
 						}
 						foreach($form_group->find('p.description') as $description){
-							$description->outertext = '<small class="form-text text-muted">' . $description->innertext . '</small>';
+							if(!$description->hasClass('ifwp-remove')){
+								$description->outertext = '<small class="form-text text-muted">' . $description->innertext . '</small>';
+							} else {
+								$description->outertext = '';
+							}
 						}
 					}
 				}
