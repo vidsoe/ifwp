@@ -15,8 +15,6 @@ Improvements and Fixes for WordPress
 
 Improvements and Fixes for WordPress
 
-Usage:
-
 [IFWP](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
 
 == Installation ==
