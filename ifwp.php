@@ -33,13 +33,14 @@
     			$class = 'ifwp_' . str_replace('-', '_', sanitize_title($class));
     		}
 			if(!class_exists($class, false)){
-				$file = plugin_dir_path(IFWP) . 'classes/class-' . str_replace('_', '-', $class) . '.php';
+				$slug = str_replace('_', '-', $class);
+				$file = plugin_dir_path(IFWP) . 'classes/' . $slug . '/class-' . $slug . '.php';
 				if(file_exists($file)){
 					require_once($file);
 				} else {
 					$class = 'ifwp_error';
 					if(!class_exists($class, false)){
-						$file = plugin_dir_path(IFWP) . 'classes/class-' . str_replace('_', '-', $class) . '.php';
+						$file = plugin_dir_path(IFWP) . 'classes/ifwp-error/class-ifwp-error.php';
 						if(file_exists($file)){
 							require_once($file);
 						}
