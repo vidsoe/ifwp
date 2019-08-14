@@ -41,10 +41,10 @@
 			$file = plugin_dir_path(IFWP) . 'includes/' . $path;
 			if(file_exists($file)){
 				require_once($file);
-				return;
+				return true;
 			}
 		}
-		ifwp('error')->doing_it_wrong(__METHOD__, 'File does not exist.');
+		return false;
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -122,7 +122,6 @@
 				return plugin_dir_url(IFWP) . 'includes/' . $path;
 			}
 		}
-		ifwp('error')->doing_it_wrong(__METHOD__, 'File does not exist.');
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -216,8 +215,9 @@
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	function update(){
-		$this->_include('plugin-update-checker-4.7/plugin-update-checker.php');
-		Puc_v4_Factory::buildUpdateChecker('https://github.com/vidsoe/ifwp', IFWP, 'ifwp');
+		if($this->_include('plugin-update-checker-4.7/plugin-update-checker.php')){
+			Puc_v4_Factory::buildUpdateChecker('https://github.com/vidsoe/ifwp', IFWP, 'ifwp');
+		}
 	}
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
