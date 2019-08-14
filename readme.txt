@@ -13,7 +13,7 @@ Improvements and Fixes for WordPress
 
 == Description ==
 
-Improvements and Fixes for WordPress
+A collection of useful methods for your WordPress theme's functions.php.
 
 Usage: [IFWP](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
 
@@ -21,7 +21,7 @@ Usage: [IFWP](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
 
 1. Upload the plugin files to the `/wp-content/plugins/ifwp` directory.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
-3. Use the `ifwp` function in your WordPress thems's functions.php.
+3. Use the `ifwp` function in your WordPress theme's functions.php.
 
 == Changelog ==
 
