@@ -55,7 +55,7 @@
 			wp_add_inline_script('rwmb-select2', $data);
 		}
 		if(self::$validation){
-			if($object->meta_box['validation']){
+			if(!empty($object->meta_box['validation'])){
 				wp_dequeue_script('rwmb-validate');
 				wp_deregister_script('rwmb-validate');
 				wp_enqueue_script('rwmb-validate', plugin_dir_url(IFWP) . 'classes/ifwp-meta-box/js/validate.js', array('jquery-validation', 'jquery-validation-additional-methods'), '4.18.4-fixed', true);
