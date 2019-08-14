@@ -213,6 +213,10 @@
                     padding: .375rem .75rem !important;
                     padding-right: calc(1.5em + 0.75rem) !important;
                 }
+				textarea.form-control.rwmb-error {
+					padding-right: calc(1.5em + .75rem) !important;
+					background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem) !important;
+				}
                 .form-control.rwmb-error:focus {
                     border-color: #dc3545 !important;
                     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
