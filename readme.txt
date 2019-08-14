@@ -13,11 +13,11 @@ Improvements and Fixes for WordPress
 
 == Description ==
 
-A collection of useful methods for your WordPress theme's functions.php.
+A collection of useful "function methods" for your WordPress theme's functions.php.
 
 Usage:
 
-[IFWP](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
+[Read more](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
 
 == Installation ==
 
@@ -29,4 +29,4 @@ Usage:
 
 Changelog:
 
-[IFWP](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
+[Read more](https://ifwp.vidsoe.com "Improvements and Fixes for WordPress")
