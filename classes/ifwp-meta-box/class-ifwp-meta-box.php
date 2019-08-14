@@ -58,7 +58,7 @@
 			if($object->meta_box['validation']){
 				wp_dequeue_script('rwmb-validate');
 				wp_deregister_script('rwmb-validate');
-				wp_enqueue_script('rwmb-validate', plugin_dir_url(IFWP) . 'js/validate.js', array('jquery-validation', 'jquery-validation-additional-methods'), '4.18.4-fixed', true);
+				wp_enqueue_script('rwmb-validate', plugin_dir_url(IFWP) . 'classes/ifwp-meta-box/js/validate.js', array('jquery-validation', 'jquery-validation-additional-methods'), '4.18.4-fixed', true);
 				if(is_callable(array('RWMB_Helpers_Field', 'localize_script_once'))){
 					RWMB_Helpers_Field::localize_script_once('rwmb-validate', 'rwmbValidate', array(
 						'summaryMessage' => esc_html__('Please correct the errors highlighted below and try again.', 'meta-box'),
