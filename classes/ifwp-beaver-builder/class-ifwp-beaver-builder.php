@@ -39,7 +39,7 @@
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    static function bootstrap_4_color_preset($colors){
+    static function fl_builder_color_presets($colors){
         if(self::$bootstrap_4_color_preset){
             if(self::$bootstrap_4_color_preset_override){
                 $colors = array();
