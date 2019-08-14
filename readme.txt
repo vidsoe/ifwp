@@ -15,7 +15,7 @@ Improvements and Fixes for WordPress
 
 A collection of useful "[function methods](https://ifwp.vidsoe.com/#function-mehotds "Function methods")" for your WordPress theme's functions.php.
 
-[Usage](https://ifwp.vidsoe.com "Usage")
+[Usage](https://ifwp.vidsoe.com/#usage "Usage")
 
 == Installation ==
 
@@ -25,4 +25,4 @@ A collection of useful "[function methods](https://ifwp.vidsoe.com/#function-meh
 
 == Changelog ==
 
-[Changelog](https://ifwp.vidsoe.com "Changelog")
+[Changelog](https://ifwp.vidsoe.com/#changelog "Changelog")
