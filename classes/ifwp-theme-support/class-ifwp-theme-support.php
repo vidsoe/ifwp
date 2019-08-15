@@ -56,23 +56,6 @@
 	//
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    function 4k_thumbnails($atts = array()){
-		$defaults = array(
-			'beaver_builder_plugin' => true,
-		);
-		$atts = shortcode_atts($defaults, $atts);
-        $this->thumbnails();
-        add_image_size('4k', 3840, 3840);
-		if($atts['beaver_builder_theme']){
-			self::$sizes['4k'] = '4K';
-			if(!has_action('image_size_names_choose', array(__CLASS__, 'image_size_names_choose'))){
-				add_action('image_size_names_choose', array(__CLASS__, 'image_size_names_choose'));
-			}
-		}
-    }
-
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
     function full_hd_thumbnails($atts = array()){
 		$defaults = array(
 			'beaver_builder_plugin' => true,
