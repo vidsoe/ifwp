@@ -10,7 +10,7 @@
  * Plugin Name: IFWP
  * Plugin URI: https://ifwp.vidsoe.com
  * Text Domain: ifwp
- * Version: 2019.8.14.5
+ * Version: 2019.8.14.6
  *
  */ // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

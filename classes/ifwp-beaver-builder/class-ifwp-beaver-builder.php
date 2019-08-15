@@ -35,7 +35,7 @@
 	//
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    static private $bootstrap_4_color_preset = array(), $bootstrap_4_color_preset_override = false, $disable_inline_editing = false;
+    static private $bootstrap_4_color_preset = array(), $bootstrap_4_color_preset_override = false, $disable_inline_editing = false, $disable_zoom = false;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -66,10 +66,28 @@
     }
 
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    static function fl_theme_viewport($str){
+        if(self::$disable_zoom){
+            return "<meta name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1, user-scalable=no' />\n";
+        }
+    	return $str;
+    }
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//
 	// methods
 	//
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    function disable_zoom(){
+		self::$disable_zoom = true;
+        if(!has_filter('fl_theme_viewport', array(__CLASS__, 'fl_theme_viewport'))){
+			add_filter('fl_theme_viewport', array(__CLASS__, 'fl_theme_viewport'));
+		}
+    }
+
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     function bootstrap_4_color_preset($override = false){
 		self::$bootstrap_4_color_preset = true;
