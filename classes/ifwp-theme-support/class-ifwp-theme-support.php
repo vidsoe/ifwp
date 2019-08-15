@@ -63,7 +63,7 @@
 		$atts = shortcode_atts($defaults, $atts);
         $this->thumbnails();
         add_image_size('full-hd', 1920, 1920);
-		if($atts['beaver_builder_theme']){
+		if($atts['beaver_builder_plugin']){
 			self::$sizes['full-hd'] = 'Full HD';
 			if(!has_action('image_size_names_choose', array(__CLASS__, 'image_size_names_choose'))){
 				add_action('image_size_names_choose', array(__CLASS__, 'image_size_names_choose'));
@@ -80,7 +80,7 @@
 		$atts = shortcode_atts($defaults, $atts);
         $this->thumbnails();
         add_image_size('hd', 1280, 1280);
-		if($atts['beaver_builder_theme']){
+		if($atts['beaver_builder_plugin']){
 			self::$sizes['hd'] = 'HD';
 			if(!has_action('image_size_names_choose', array(__CLASS__, 'image_size_names_choose'))){
 				add_action('image_size_names_choose', array(__CLASS__, 'image_size_names_choose'));
